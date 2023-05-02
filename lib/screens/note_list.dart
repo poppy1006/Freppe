@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:notes_app/TaskApp/screens/home.dart';
 import 'package:notes_app/db_helper/db_helper.dart';
 import 'package:notes_app/modal_class/notes.dart';
 import 'package:notes_app/screens/note_detail.dart';
@@ -75,6 +77,19 @@ class NoteListState extends State<NoteList> {
     }
 // beginner add notes button
     return Scaffold(
+      bottomNavigationBar: CurvedNavigationBar(
+        animationDuration: Duration(milliseconds: 300),
+        backgroundColor: Colors.white,
+        color: Colors.black,
+        items: [
+        IconButton(onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) =>const NoteList()));}, icon: Icon(Icons.book,color: Colors.white),),
+        IconButton(onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));}, icon: Icon(Icons.task,color: Colors.white))
+      ]
+      
+      ),
+
+
+
       appBar: myAppBar(),
       body: noteList.isEmpty
           ? Container(

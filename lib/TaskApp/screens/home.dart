@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:notes_app/TaskApp/constants/colors.dart';
 import 'package:notes_app/TaskApp/widgets/todo_item.dart';
 
+import '../../screens/note_list.dart';
 import '../model/todo.dart';
 
 class Home extends StatefulWidget {
@@ -28,6 +30,16 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CurvedNavigationBar(
+        animationDuration: Duration(milliseconds: 300),
+        backgroundColor: Colors.white,
+        color: Colors.black,
+        items: [
+        IconButton(onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => NoteList()));}, icon: Icon(Icons.book,color: Colors.white),),
+        IconButton(onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));}, icon: Icon(Icons.task,color: Colors.white))
+      ]
+      
+      ),
       backgroundColor: tdBGColor,
       appBar: _buildAppbar(),
       body: Stack(
